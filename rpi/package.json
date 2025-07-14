@@ -1,0 +1,30 @@
+{
+  "dependencies": {
+    "@jrc03c/filedb": "^0.0.28",
+    "@jrc03c/fs-extras": "^0.0.24",
+    "@jrc03c/js-math-tools": "^0.0.95",
+    "@jrc03c/logger": "^0.0.21",
+    "@jrc03c/pause": "^0.0.10",
+    "@jrc03c/vue-component-with-css": "^0.0.21",
+    "@jrc03c/web-worker-helper": "^0.0.8",
+    "express": "^5.1.0",
+    "gray-matter": "^4.0.3",
+    "liquidjs": "^10.21.0",
+    "markdown-it": "^14.1.0",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "@jrc03c/watch": "^0.0.21",
+    "esbuild": "^0.25.3",
+    "eslint": "^9.25.1",
+    "prettier": "^3.5.3"
+  },
+  "name": "@jrc03c/ameyama.com",
+  "scripts": {
+    "build": "node build.mjs",
+    "serve": "node index.mjs",
+    "watch": "node build.mjs --watch"
+  },
+  "version": "0.0.1"
+}

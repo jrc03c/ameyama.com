@@ -1,0 +1,10 @@
+_data
+.env
+.secrets.json
+*.pem
+demo/private
+email-validator-cache
+node_modules
+secrets.json
+ssl-certs
+temp*

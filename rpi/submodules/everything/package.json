@@ -1,0 +1,39 @@
+{
+  "dependencies": {
+    "@jrc03c/base-class": "^0.0.13",
+    "@jrc03c/email-validator": "^0.0.5",
+    "@jrc03c/filedb": "^0.0.30",
+    "@jrc03c/fs-extras": "^0.0.25",
+    "@jrc03c/js-crypto-helpers": "^0.0.23",
+    "@jrc03c/js-math-tools": "^0.0.95",
+    "@jrc03c/js-text-tools": "^0.0.68",
+    "@jrc03c/logger": "^0.0.22",
+    "@jrc03c/make-key": "^0.0.40",
+    "@jrc03c/pause": "^0.0.11",
+    "@jrc03c/vue-component-with-css": "^0.0.22",
+    "cookie-parser": "^1.4.7",
+    "express": "^4.18.2",
+    "helmet": "^6.1.5",
+    "markdown-it": "^14.1.0",
+    "nodemailer": "^6.9.1",
+    "vue": "^3.5.17",
+    "vue-router": "^4.5.1",
+    "vuex": "^4.1.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.12.0",
+    "@jrc03c/watch": "^0.0.18",
+    "esbuild": "^0.25.0",
+    "eslint": "^9.12.0",
+    "eslint-plugin-html": "^7.1.0",
+    "globals": "^15.11.0",
+    "prettier": "^3.1.0"
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "node index.mjs --dev",
+    "serve": "node index.mjs",
+    "watch": "node build.mjs --watch"
+  },
+  "type": "module"
+}

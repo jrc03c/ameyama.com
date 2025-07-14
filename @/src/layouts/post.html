@@ -1,0 +1,13 @@
+---
+layout: default
+---
+
+<div class="post">
+  <h2 class="title">{{ title }}</h2>
+
+  <p class="details">
+    {{ page.date | to-locale-date-string }} by {{ site.author }}
+  </p>
+
+  {{ content }}
+</div>

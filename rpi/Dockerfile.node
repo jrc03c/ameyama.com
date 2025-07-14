@@ -1,0 +1,6 @@
+FROM docker.io/alpine:latest
+EXPOSE 3000
+VOLUME /root/www
+RUN apk update && apk add nodejs
+WORKDIR /root/www
+ENTRYPOINT node index.mjs
