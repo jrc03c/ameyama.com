@@ -18,6 +18,8 @@ layout: page
 
   .poem img {
     max-width: 256px;
+    border: 0;
+    box-shadow: none;
   }
 
   .poem .lines div {
