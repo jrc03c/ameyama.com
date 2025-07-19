@@ -5,6 +5,10 @@ layout: page
 ---
 
 <style>
+  h2 {
+    text-align: center;
+  }
+
   .poem {
     margin: 0 0 var(--spacing-lg) 0;
     display: flex;
