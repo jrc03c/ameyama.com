@@ -4,12 +4,12 @@
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.1",
     "@eslint/js": "^9.12.0",
     "@jrc03c/bash-colors": "^0.0.8",
-    "@jrc03c/fs-extras": "^0.0.25",
-    "@jrc03c/js-math-tools": "^0.0.96",
-    "@jrc03c/js-text-tools": "^0.0.83",
-    "@jrc03c/logger": "^0.0.22",
-    "@jrc03c/watch": "^0.0.18",
-    "@jrc03c/web-crawler": "^0.0.17",
+    "@jrc03c/fs-extras": "^0.0.26",
+    "@jrc03c/js-math-tools": "^0.0.99",
+    "@jrc03c/js-text-tools": "^0.0.90",
+    "@jrc03c/logger": "^0.0.23",
+    "@jrc03c/watch": "^0.0.23",
+    "@jrc03c/web-crawler": "^0.0.18",
     "esbuild": "^0.25.0",
     "eslint": "^9.12.0",
     "express": "^4.21.2",
@@ -25,6 +25,6 @@
   },
   "type": "module",
   "dependencies": {
-    "@jrc03c/web-worker-helper": "^0.0.9"
+    "@jrc03c/web-worker-helper": "^0.0.10"
   }
 }
