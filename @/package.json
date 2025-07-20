@@ -6,7 +6,7 @@
     "@jrc03c/bash-colors": "^0.0.8",
     "@jrc03c/fs-extras": "^0.0.26",
     "@jrc03c/js-math-tools": "^0.0.99",
-    "@jrc03c/js-text-tools": "^0.0.91",
+    "@jrc03c/js-text-tools": "^0.0.94",
     "@jrc03c/logger": "^0.0.23",
     "@jrc03c/watch": "^0.0.23",
     "@jrc03c/web-crawler": "^0.0.18",
