@@ -43,18 +43,12 @@ window.addEventListener("load", async () => {
     const padLength = results.length.toString().length
 
     results.forEach((result, i) => {
-      const el = document.createElement("blockquote")
+      const el = document.createElement("div")
       el.classList.add("search-result")
 
       el.innerHTML = `
-        <p>
-          <b>${(i + 1).toString().padStart(padLength, "0")}.</b>
-          <a href="${result.url}">${result.url}</a>
-        </p>
-
-        <div>
-          ${result.excerpt}
-        </div>
+        <b>${(i + 1).toString().padStart(padLength, "0")}.</b>
+        <a href="${result.url}">${result.title}</a>
       `
 
       resultsContainer.appendChild(el)

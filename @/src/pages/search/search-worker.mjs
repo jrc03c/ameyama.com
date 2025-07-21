@@ -1,72 +1,62 @@
-import { fuzzyFind } from "@jrc03c/js-text-tools"
+import {
+  fuzzyFindScore,
+  getStats,
+  getTFIDFScore,
+  strip,
+} from "@jrc03c/js-text-tools"
+
+import { mean } from "@jrc03c/js-math-tools"
 import { WebWorkerHelper } from "@jrc03c/web-worker-helper"
 
 const worker = new WebWorkerHelper()
-const excerptPadding = 32
 let index
 
 worker.on("set-index", async payload => {
-  index = payload
+  index = payload.map(doc => {
+    doc.url = doc.file.replace(/index\.html$/, "")
+
+    doc.title = (() => {
+      try {
+        return doc.raw
+          .match(/<title.*?>.*?<\/title.*?>/gs)[0]
+          .replaceAll(/<\/?title.*?>/gs, "")
+          .split("|")[0]
+          .trim()
+      } catch (e) {
+        return doc.url
+      }
+    })()
+
+    doc.titleStats = getStats(strip(doc.title))
+    doc.contentStats = getStats(strip(doc.raw))
+    return doc
+  })
 })
 
 worker.on("search", async payload => {
-  return fuzzyFind(
-    payload.toLowerCase(),
-    index.map(doc => {
-      if (!doc.rawLower) {
-        doc.rawLower = doc.raw.toLowerCase()
-      }
+  const query = strip(payload)
+  const nGrams = query.split(" ")
+  const allTitleStats = []
+  const allContentStats = []
 
-      return doc.rawLower
-    }),
-  )
-    .slice(0, 10)
-    .map(result => {
-      const doc = index.find(doc => doc.rawLower === result.doc)
-      result.url = doc.file.replace(/index\.html$/, "")
+  index.forEach(doc => {
+    allTitleStats.push(doc.titleStats)
+    allContentStats.push(doc.contentStats)
+  })
 
-      result.excerpt =
-        "... "
-        + result.matches
-          .map(match => {
-            const index = result.doc.indexOf(match)
-            let start = Math.max(0, index - excerptPadding)
+  return index
+    .map(doc => {
+      doc.score =
+        (1 / 3) *
+          mean(
+            nGrams.map(v =>
+              getTFIDFScore(v, doc.contentStats, allContentStats),
+            ),
+          ) +
+        (1 / 3) * fuzzyFindScore(query, [doc.titleStats])[0].score +
+        (1 / 3) * fuzzyFindScore(query, [doc.contentStats])[0].score
 
-            let end = Math.min(
-              doc.raw.length,
-              index + match.length + excerptPadding,
-            )
-
-            while (start > 0 && !doc.raw[start].match(/\s/)) {
-              start--
-            }
-
-            while (end < doc.raw.length - 1 && !doc.raw[end].match(/\s/)) {
-              end++
-            }
-
-            const left =
-              doc
-                .raw
-                .slice(start, index)
-                .replaceAll(/\s/g, " ")
-
-            const middle =
-              "<b>" +
-              doc.raw.slice(index, index + match.length).replaceAll(/\s/g, " ") +
-              "</b>"
-
-            const right =
-              doc.raw
-                .slice(index + match.length, end)
-                .replaceAll(/\s/g, " ")
-
-            return left + middle + right
-          })
-          .join(" ... ")
-          .trim()
-        + " ..."
-
-      return result
+      return doc
     })
+    .toSorted((a, b) => b.score - a.score)
 })

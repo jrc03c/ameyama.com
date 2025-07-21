@@ -4,6 +4,18 @@ layout: page
 permalink: /search/
 ---
 
+<style>
+  .search-result {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+  }
+</style>
+
 <div id="search">
   <div class="bg-yellow notification">
     <b>NOTE:</b>
@@ -11,7 +23,7 @@ permalink: /search/
     Sorry!
   </div>
 
-  <div id="search-results"></div>
+  <div id="search-results">Searching...</div>
 </div>
 
 <script src="search-bundle.js"></script>

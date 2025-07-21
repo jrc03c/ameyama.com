@@ -31,7 +31,7 @@ async function buildSearchIndex(options) {
   const out = files.map(f => {
     return {
       file: f.replace(dir, ""),
-      raw: collapseWhitespace(removeHTML(fs.readFileSync(f, "utf8"))),
+      raw: collapseWhitespace(fs.readFileSync(f, "utf8")),
     }
   })
 
@@ -98,10 +98,6 @@ async function rebuild() {
   } catch (e) {
     console.error(e)
   }
-}
-
-function removeHTML(x) {
-  return x.replaceAll(/<.*?>/gs, "").trim()
 }
 
 if (process.argv.indexOf("-w") > -1 || process.argv.indexOf("--watch") > -1) {
