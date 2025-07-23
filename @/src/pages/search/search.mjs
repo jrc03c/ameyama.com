@@ -40,18 +40,30 @@ window.addEventListener("load", async () => {
     const results = await worker.exec("search", query)
     resultsContainer.innerHTML = ""
 
-    const padLength = results.length.toString().length
+    if (results.length > 0) {
+      const padLength = results.length.toString().length
 
-    results.forEach((result, i) => {
-      const el = document.createElement("div")
-      el.classList.add("search-result")
+      results.forEach((result, i) => {
+        const el = document.createElement("blockquote")
+        el.classList.add("search-result")
 
-      el.innerHTML = `
-        <b>${(i + 1).toString().padStart(padLength, "0")}.</b>
-        <a href="${result.url}">${result.title}</a>
+        el.innerHTML = `
+        <div class="search-result-header">
+          <b>
+            ${(i + 1).toString().padStart(padLength, "0")}.
+            <a href="${result.url}">${result.title}</a>
+          </b>
+        </div>
+
+        <div>
+          ${result.excerpt}
+        </div>
       `
 
-      resultsContainer.appendChild(el)
-    })
+        resultsContainer.appendChild(el)
+      })
+    } else {
+      resultsContainer.innerHTML = "No results."
+    }
   }
 })
