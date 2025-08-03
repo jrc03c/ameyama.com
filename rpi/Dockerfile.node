@@ -1,8 +1,13 @@
 FROM docker.io/alpine:latest
-EXPOSE 3000
-VOLUME /root/www
-VOLUME /root/music
 RUN apk update && apk add nodejs
+
+EXPOSE 3000
+
+VOLUME /root/.config/music-app
+VOLUME /root/music
+VOLUME /root/www
+
 WORKDIR /root/www
+ENV MUSIC_SETTINGS_DIR "/root/.config/music-app"
 ENV MUSIC_DIR "/root/music"
 ENTRYPOINT node index.mjs

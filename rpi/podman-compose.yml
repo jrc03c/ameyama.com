@@ -25,5 +25,6 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - .:/root/www:z
+      - /home/josh/.config/music-app:/root/.config/music-app:z
       - /home/josh/storage/music:/root/music:z
+      - .:/root/www:z
