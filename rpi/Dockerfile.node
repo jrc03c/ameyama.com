@@ -4,4 +4,5 @@ VOLUME /root/www
 VOLUME /root/music
 RUN apk update && apk add nodejs
 WORKDIR /root/www
+ENV MUSIC_DIR "/root/music"
 ENTRYPOINT node index.mjs
