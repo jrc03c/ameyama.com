@@ -1,5 +1,5 @@
 FROM docker.io/alpine:latest
-RUN apk update && apk add nodejs
+RUN apk update && apk add ffmpeg nodejs
 
 EXPOSE 3000
 
