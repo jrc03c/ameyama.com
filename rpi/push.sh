@@ -1,16 +1,6 @@
 rsync \
-  -arvz \
-  -e "ssh -p $AMEYAMA_COM_SSH_PORT" \
+  -avz \
   --delete \
-  --exclude=submodules/everything/private \
-  --exclude=submodules/stats/times.json \
+  -e "ssh -p 666" \
   ./* \
-  $AMEYAMA_COM_SSH_USERNAME@ameyama.com:$AMEYAMA_COM_SSH_DIR
-
-rsync \
-  -arvz \
-  -e "ssh -p $AMEYAMA_COM_SSH_PORT" \
-  --delete \
-  --exclude=.git \
-  ./.[^.]* \
-  $AMEYAMA_COM_SSH_USERNAME@ameyama.com:$AMEYAMA_COM_SSH_DIR
+  josh@rpi.ameyama.com:/home/josh/storage/apps/www/

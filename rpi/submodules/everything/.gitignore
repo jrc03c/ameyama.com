@@ -1,5 +1,0 @@
-.env
-*.pem
-node_modules
-private
-temp*js

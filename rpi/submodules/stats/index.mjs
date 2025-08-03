@@ -1,8 +1,21 @@
+import { Logger } from "@jrc03c/logger"
 import express from "express"
 import fs from "node:fs"
 import path from "node:path"
 
-async function install(app, logger) {
+function install(app, logger) {
+  logger =
+    logger ||
+    (() => {
+      const logFile = path.join(import.meta.dirname, "logs.json")
+
+      if (!fs.existsSync(logFile)) {
+        fs.writeFileSync(logFile, "", "utf8")
+      }
+
+      return new Logger({ path: logFile })
+    })()
+
   const middleware = express()
   const maxAge = 1000 * 60 * 60 * 24 * 30 // 30 days
   const file = path.join(import.meta.dirname, "times.json")
@@ -52,14 +65,10 @@ async function install(app, logger) {
 export { install }
 
 if (import.meta.url.includes(process.argv[1])) {
-  !(async () => {
-    const { Logger } = await import("@jrc03c/logger")
-    const app = express()
-    const logger = new Logger({ path: "/tmp/logs.json" })
-    await install(app, logger)
+  const app = express()
+  install(app)
 
-    app.listen(3000, () => {
-      console.log("Listening on port 3000...")
-    })
-  })()
+  app.listen(3000, () => {
+    console.log("Listening on port 3000...")
+  })
 }

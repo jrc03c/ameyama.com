@@ -26,3 +26,4 @@ services:
       - 3000:3000
     volumes:
       - .:/root/www:z
+      - /home/josh/storage/music:/root/music:z

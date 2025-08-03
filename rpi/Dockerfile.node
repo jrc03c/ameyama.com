@@ -1,6 +1,7 @@
 FROM docker.io/alpine:latest
 EXPOSE 3000
 VOLUME /root/www
+VOLUME /root/music
 RUN apk update && apk add nodejs
 WORKDIR /root/www
 ENTRYPOINT node index.mjs
