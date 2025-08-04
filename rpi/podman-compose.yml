@@ -17,6 +17,8 @@ services:
     ports:
       - 8080:80
       - 8443:443
+    volumes:
+      - /home/josh/.local/share/caddy-root:/root:z
 
   node:
     build:

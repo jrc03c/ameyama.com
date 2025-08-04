@@ -3,4 +3,4 @@ rsync \
   --delete \
   -e "ssh -p 666" \
   ./* \
-  josh@rpi.ameyama.com:/home/josh/storage/apps/www/
+  josh@192.168.1.14:/home/josh/storage/apps/www/

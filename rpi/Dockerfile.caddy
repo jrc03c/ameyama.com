@@ -2,4 +2,5 @@ FROM docker.io/alpine:latest
 RUN apk update && apk add caddy
 EXPOSE 8080
 EXPOSE 8443
+VOLUME /root
 ENTRYPOINT caddy reverse-proxy --from rpi.ameyama.com --to anubis:8923
