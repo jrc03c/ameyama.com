@@ -29,7 +29,7 @@ const template = /* html */ `
   <div
     :class="{ [candidates.orientation.toLowerCase()]: true }"
     :style="computedStyle"
-    @mousedown="onMouseDown"
+    @touchstart="onTouchStart"
     class="x-candidates-view"
     v-if="candidates">
     <x-chicken :type="candidates[0].type"></x-chicken>
@@ -85,30 +85,32 @@ const CandidatesView = createVueComponentWithCSS({
   },
 
   methods: {
-    onMouseDown(event) {
+    onTouchStart(event) {
       event.stopImmediatePropagation()
       event.preventDefault()
       this.isBeingDragged = true
+      const touch = event.touches[0]
       const rect = this.$el.getBoundingClientRect()
-      this.mouseOffset.x = event.clientX - rect.x
-      this.mouseOffset.y = event.clientY - rect.y
+      this.mouseOffset.x = touch.clientX - rect.x
+      this.mouseOffset.y = touch.clientY - rect.y
       this.recomputeStyle()
       this.$emit("drag-start")
     },
 
-    onMouseMove(event) {
+    onTouchMove(event) {
       event.stopImmediatePropagation()
       event.preventDefault()
 
       if (this.isBeingDragged) {
-        this.x = event.clientX - this.mouseOffset.x + this.touchOffset.x
-        this.y = event.clientY - this.mouseOffset.y + this.touchOffset.y
+        const touch = event.touches[0]
+        this.x = touch.clientX - this.mouseOffset.x + this.touchOffset.x
+        this.y = touch.clientY - this.mouseOffset.y + this.touchOffset.y
         this.recomputeStyle()
         this.$emit("drag")
       }
     },
 
-    onMouseUp(event) {
+    onTouchEnd(event) {
       event.stopImmediatePropagation()
       event.preventDefault()
 
@@ -156,11 +158,11 @@ const CandidatesView = createVueComponentWithCSS({
   },
 
   mounted() {
-    this.onMouseMove = this.onMouseMove.bind(this)
-    this.onMouseUp = this.onMouseUp.bind(this)
+    this.onTouchMove = this.onTouchMove.bind(this)
+    this.onTouchEnd = this.onTouchEnd.bind(this)
     this.onParentResize = this.onParentResize.bind(this)
-    window.addEventListener("mousemove", this.onMouseMove)
-    window.addEventListener("mouseup", this.onMouseUp)
+    window.addEventListener("touchmove", this.onTouchMove)
+    window.addEventListener("touchend", this.onTouchEnd)
     window.addEventListener("resize", this.onParentResize)
     this.resizeObserver = new ResizeObserver(this.onParentResize)
     this.resizeObserver.observe(this.$el.parentElement)
@@ -168,8 +170,8 @@ const CandidatesView = createVueComponentWithCSS({
   },
 
   unmounted() {
-    window.removeEventListener("mousemove", this.onMouseMove)
-    window.removeEventListener("mouseup", this.onMouseUp)
+    window.removeEventListener("touchmove", this.onTouchMove)
+    window.removeEventListener("touchend", this.onTouchEnd)
     window.removeEventListener("resize", this.onParentResize)
     this.resizeObserver.disconnect()
   },
