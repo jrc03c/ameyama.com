@@ -82,7 +82,7 @@ const css = /* css */ `
     min-height: 100vh;
     max-height: 100vh;
     z-index: 2;
-    background-color: rgba(0, 0, 0, 0.67);
+    background-color: rgba(0, 0, 0, 0.85);
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -169,7 +169,8 @@ const template = /* html */ `
           @drag="onCandidatesDrag"
           @drag-start="onCandidatesDragStart"
           @drag-end="onCandidatesDragEnd"
-          ref="candidatesView">
+          ref="candidatesView"
+          v-if="game.candidates && game.candidates[0] && game.candidates[1]">
         </x-candidates-view>
       </div>
     </div>
@@ -246,11 +247,13 @@ const AppView = createVueComponentWithCSS({
           this.game.grid[i][j] = candidate
         })
 
+        this.game.candidates = {}
+
         this.$nextTick(() => {
           this.game.update()
 
           if (this.game.state === Game.State.PLAY) {
-            this.game.generateCandidates()
+            this.$nextTick(() => this.game.generateCandidates())
           }
         })
       }
