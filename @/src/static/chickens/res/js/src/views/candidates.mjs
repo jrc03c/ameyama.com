@@ -141,7 +141,7 @@ const CandidatesView = createVueComponentWithCSS({
         this.x = parentRect.x + parentRect.width / 2 - width / 2
         this.y = parentRect.y
         this.touchOffset.x = -this.width / 2
-        this.touchOffset.y = -this.height * 1.25
+        this.touchOffset.y = -this.height * 1.5
       }
     },
 
