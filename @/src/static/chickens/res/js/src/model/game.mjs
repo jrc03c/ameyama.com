@@ -8,11 +8,9 @@ class Game extends BaseClass {
     VERTICAL: "VERTICAL",
 
     get RANDOM() {
-      return (
-        Math.random() < 0.5
+      return Math.random() < 0.5
         ? Game.Orientation.HORIZONTAL
         : Game.Orientation.VERTICAL
-      )
     },
   }
 
@@ -62,9 +60,8 @@ class Game extends BaseClass {
       throw new Error("There are no open index pairs!")
     }
 
-    const { orientation } = openIndexPairs[
-      Math.floor(Math.random() * openIndexPairs.length)
-    ]
+    const { orientation } =
+      openIndexPairs[Math.floor(Math.random() * openIndexPairs.length)]
 
     this.candidates = {
       0: Chicken.random(),
@@ -117,13 +114,17 @@ class Game extends BaseClass {
     for (let i = 0; i < this.grid.length; i++) {
       for (let j = 0; j < this.grid[i].length - 2; j++) {
         if (
-          this.grid[i][j]
-          && this.grid[i][j + 1]
-          && this.grid[i][j + 2]
-          && this.grid[i][j].type === this.grid[i][j + 1].type
-          && this.grid[i][j].type === this.grid[i][j + 2].type
+          this.grid[i][j] &&
+          this.grid[i][j + 1] &&
+          this.grid[i][j + 2] &&
+          this.grid[i][j].type === this.grid[i][j + 1].type &&
+          this.grid[i][j].type === this.grid[i][j + 2].type
         ) {
-          groupsToRemove.push([[i, j], [i, j + 1], [i, j + 2]])
+          groupsToRemove.push([
+            [i, j],
+            [i, j + 1],
+            [i, j + 2],
+          ])
         }
       }
     }
@@ -132,13 +133,17 @@ class Game extends BaseClass {
     for (let i = 0; i < this.grid.length - 2; i++) {
       for (let j = 0; j < this.grid[i].length; j++) {
         if (
-          this.grid[i][j]
-          && this.grid[i + 1][j]
-          && this.grid[i + 2][j]
-          && this.grid[i][j].type === this.grid[i + 1][j].type
-          && this.grid[i][j].type === this.grid[i + 2][j].type
+          this.grid[i][j] &&
+          this.grid[i + 1][j] &&
+          this.grid[i + 2][j] &&
+          this.grid[i][j].type === this.grid[i + 1][j].type &&
+          this.grid[i][j].type === this.grid[i + 2][j].type
         ) {
-          groupsToRemove.push([[i, j], [i + 1, j], [i + 2, j]])
+          groupsToRemove.push([
+            [i, j],
+            [i + 1, j],
+            [i + 2, j],
+          ])
         }
       }
     }

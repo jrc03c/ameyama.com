@@ -29,7 +29,6 @@ const template = /* html */ `
   <div
     :class="{ [candidates.orientation.toLowerCase()]: true }"
     :style="computedStyle"
-    @touchstart="onTouchStart"
     class="x-candidates-view"
     v-if="candidates">
     <x-chicken :type="candidates[0].type"></x-chicken>
@@ -69,8 +68,8 @@ const CandidatesView = createVueComponentWithCSS({
       css,
       height: 100,
       isBeingDragged: false,
-      mouseOffset: { x: 0, y: 0 },
       resizeObserver: null,
+      shouldKeepRecomputingStyle: true,
       touchOffset: { x: 0, y: 32 },
       width: 100,
       x: 0,
@@ -86,15 +85,20 @@ const CandidatesView = createVueComponentWithCSS({
 
   methods: {
     onTouchStart(event) {
-      event.stopImmediatePropagation()
-      event.preventDefault()
-      this.isBeingDragged = true
-      const touch = event.touches[0]
       const rect = this.$el.getBoundingClientRect()
-      this.mouseOffset.x = touch.clientX - rect.x
-      this.mouseOffset.y = touch.clientY - rect.y
-      this.recomputeStyle()
-      this.$emit("drag-start")
+      const cx = rect.x + rect.width / 2
+      const cy = rect.y + rect.height / 2
+      const touch = event.touches[0]
+      const tx = touch.clientX
+      const ty = touch.clientY
+      const d = Math.sqrt(Math.pow(tx - cx, 2) + Math.pow(ty - cy, 2))
+
+      if (d < Math.max(rect.width, rect.height) * 1.5) {
+        event.stopImmediatePropagation()
+        event.preventDefault()
+        this.isBeingDragged = true
+        this.$emit("drag-start")
+      }
     },
 
     onTouchMove(event) {
@@ -103,18 +107,16 @@ const CandidatesView = createVueComponentWithCSS({
 
       if (this.isBeingDragged) {
         const touch = event.touches[0]
-        this.x = touch.clientX - this.mouseOffset.x + this.touchOffset.x
-        this.y = touch.clientY - this.mouseOffset.y + this.touchOffset.y
-        this.recomputeStyle()
+        this.x = touch.clientX + this.touchOffset.x
+        this.y = touch.clientY + this.touchOffset.y
         this.$emit("drag")
       }
     },
 
     onTouchEnd(event) {
-      event.stopImmediatePropagation()
-      event.preventDefault()
-
       if (this.isBeingDragged) {
+        event.stopImmediatePropagation()
+        event.preventDefault()
         this.$emit("drag-end")
       }
 
@@ -131,16 +133,16 @@ const CandidatesView = createVueComponentWithCSS({
         this.height = Math.round(this.width / 2)
         this.x = parentRect.x + parentRect.width / 2 - width / 2
         this.y = parentRect.y + parentRect.height / 2 - height / 2
+        this.touchOffset.x = -this.width / 2
         this.touchOffset.y = -this.height * 1.25
       } else {
         this.height = parentRect.height
         this.width = Math.round(this.height / 2)
         this.x = parentRect.x + parentRect.width / 2 - width / 2
         this.y = parentRect.y
-        this.touchOffset.y = -this.width * 1.25
+        this.touchOffset.x = -this.width / 2
+        this.touchOffset.y = -this.height * 1.25
       }
-
-      this.recomputeStyle()
     },
 
     recomputeStyle() {
@@ -158,22 +160,35 @@ const CandidatesView = createVueComponentWithCSS({
   },
 
   mounted() {
+    this.onTouchStart = this.onTouchStart.bind(this)
     this.onTouchMove = this.onTouchMove.bind(this)
     this.onTouchEnd = this.onTouchEnd.bind(this)
     this.onParentResize = this.onParentResize.bind(this)
+    window.addEventListener("touchstart", this.onTouchStart)
     window.addEventListener("touchmove", this.onTouchMove)
     window.addEventListener("touchend", this.onTouchEnd)
     window.addEventListener("resize", this.onParentResize)
     this.resizeObserver = new ResizeObserver(this.onParentResize)
     this.resizeObserver.observe(this.$el.parentElement)
     window.requestAnimationFrame(() => this.onParentResize())
+
+    const loop = () => {
+      if (this.shouldKeepRecomputingStyle) {
+        this.recomputeStyle()
+        window.requestAnimationFrame(loop)
+      }
+    }
+
+    loop()
   },
 
   unmounted() {
+    window.removeEventListener("touchstart", this.onTouchStart)
     window.removeEventListener("touchmove", this.onTouchMove)
     window.removeEventListener("touchend", this.onTouchEnd)
     window.removeEventListener("resize", this.onParentResize)
     this.resizeObserver.disconnect()
+    this.shouldKeepRecomputingStyle = false
   },
 })
 

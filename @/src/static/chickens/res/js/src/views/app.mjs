@@ -182,7 +182,6 @@ const template = /* html */ `
 // -----------------------------------------------------------------------------
 
 import { CandidatesView } from "./candidates.mjs"
-import { Chicken } from "../model/chicken.mjs"
 import { clamp } from "@jrc03c/js-math-tools"
 import { createVueComponentWithCSS } from "@jrc03c/vue-component-with-css"
 import { Game } from "../model/game.mjs"
@@ -219,21 +218,37 @@ const AppView = createVueComponentWithCSS({
 
         if (this.game.candidates.orientation === Game.Orientation.HORIZONTAL) {
           const i = Math.round((candRect.y - contRect.y) / blockSize) - 1
-          const j = clamp(Math.round((candRect.x - contRect.x) / blockSize), 0, 4)
-          this.indicesToHighlight = [[i, j], [i, j + 1]]
+          const j = clamp(
+            Math.round((candRect.x - contRect.x) / blockSize),
+            0,
+            4,
+          )
+          this.indicesToHighlight = [
+            [i, j],
+            [i, j + 1],
+          ]
         } else {
           const i = Math.round((candRect.y - contRect.y) / blockSize) - 1
-          const j = clamp(Math.round((candRect.x - contRect.x) / blockSize), 0, 5)
-          this.indicesToHighlight = [[i, j], [i + 1, j]]
+          const j = clamp(
+            Math.round((candRect.x - contRect.x) / blockSize),
+            0,
+            5,
+          )
+          this.indicesToHighlight = [
+            [i, j],
+            [i + 1, j],
+          ]
         }
 
-        if (!this.indicesToHighlight.every(v => {
-          try {
-            return !this.game.grid[v[0]][v[1]]
-          } catch(e) {
-            return false
-          }
-        })) {
+        if (
+          !this.indicesToHighlight.every(v => {
+            try {
+              return !this.game.grid[v[0]][v[1]]
+            } catch (e) {
+              return false
+            }
+          })
+        ) {
           this.indicesToHighlight = []
         }
       }

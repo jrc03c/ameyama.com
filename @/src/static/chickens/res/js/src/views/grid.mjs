@@ -82,7 +82,6 @@ const template = /* html */ `
 // -----------------------------------------------------------------------------
 
 import { Chicken as ChickenComponent } from "../components/chicken.mjs"
-import { Chicken as ChickenModel } from "../model/chicken.mjs"
 import { createVueComponentWithCSS } from "@jrc03c/vue-component-with-css"
 
 const GridView = createVueComponentWithCSS({
@@ -121,7 +120,7 @@ const GridView = createVueComponentWithCSS({
       }
 
       return !!this.indicesToHighlight.find(v => v[0] === i && v[1] === j)
-    }
+    },
   },
 })
 

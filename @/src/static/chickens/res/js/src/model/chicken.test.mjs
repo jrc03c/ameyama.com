@@ -9,10 +9,10 @@ test("Chicken", () => {
     const c = Chicken.random()
 
     expect(
-      c.type === Chicken.Type.BROWN
-      || c.type === Chicken.Type.ORANGE
-      || c.type === Chicken.Type.WHITE
-      || c.type === Chicken.Type.YELLOW
+      c.type === Chicken.Type.BROWN ||
+        c.type === Chicken.Type.ORANGE ||
+        c.type === Chicken.Type.WHITE ||
+        c.type === Chicken.Type.YELLOW,
     ).toBe(true)
   }
 })
