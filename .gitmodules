@@ -1,6 +1,3 @@
 [submodule "rpi/submodules/music"]
 	path = rpi/submodules/music
 	url = git@git.sr.ht:~jrc03c/music-app
-[submodule "@/src/static/chickens"]
-	path = @/src/static/chickens
-	url = git@git.sr.ht:~jrc03c/chickens
