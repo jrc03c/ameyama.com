@@ -1,0 +1,27 @@
+{
+  "dependencies": {
+    "@jrc03c/base-class": "^0.0.13",
+    "@jrc03c/js-math-tools": "^0.0.100",
+    "@jrc03c/misc-vue-components": "^0.0.22",
+    "@jrc03c/vue-component-with-css": "^0.0.23",
+    "vue": "^3.5.18",
+    "vue-router": "^4.5.1",
+    "vuex": "^4.1.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.12.0",
+    "@jrc03c/fake-jest": "^0.0.18",
+    "@jrc03c/watch": "^0.0.18",
+    "esbuild": "^0.25.0",
+    "eslint": "^9.12.0",
+    "eslint-plugin-html": "^7.1.0",
+    "globals": "^15.11.0",
+    "prettier": "^3.1.0"
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "serve": "python3 -m http.server",
+    "watch": "node build.mjs --watch"
+  },
+  "type": "module"
+}
