@@ -4024,13 +4024,13 @@
           this.height = Math.round(this.width / 2);
           this.x = parentRect.x + parentRect.width / 2 - width / 2;
           this.y = parentRect.y + parentRect.height / 2 - height / 2;
-          this.touchOffset.y = -this.height;
+          this.touchOffset.y = -this.height * 1.25;
         } else {
           this.height = parentRect.height;
           this.width = Math.round(this.height / 2);
           this.x = parentRect.x + parentRect.width / 2 - width / 2;
           this.y = parentRect.y;
-          this.touchOffset.y = -this.width;
+          this.touchOffset.y = -this.width * 1.25;
         }
         this.recomputeStyle();
       },
