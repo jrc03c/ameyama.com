@@ -14,6 +14,12 @@ const css = /* css */ `
     position: fixed;
     left: 0;
     top: 0;
+    opacity: 0;
+    transition: opacity 0.1s ease;
+  }
+
+  .x-candidates-view.visible {
+    opacity: 1;
   }
 
   .x-candidates-view.vertical {
@@ -44,6 +50,15 @@ import { Chicken } from "../components/chicken.mjs"
 import { createVueComponentWithCSS } from "@jrc03c/vue-component-with-css"
 import { Game } from "../model/game.mjs"
 
+function debounce(fn, ms) {
+  let timeout
+
+  return function() {
+    clearTimeout(timeout)
+    timeout = setTimeout(() => fn(...arguments), ms)
+  }
+}
+
 const CandidatesView = createVueComponentWithCSS({
   name: "x-candidates-view",
   emits: ["drag", "drag-end", "drag-start"],
@@ -69,7 +84,6 @@ const CandidatesView = createVueComponentWithCSS({
       height: 100,
       isBeingDragged: false,
       resizeObserver: null,
-      shouldKeepRecomputingStyle: true,
       touchOffset: { x: 0, y: 32 },
       width: 100,
       x: 0,
@@ -77,13 +91,55 @@ const CandidatesView = createVueComponentWithCSS({
     }
   },
 
-  watch: {
-    candidates() {
-      this.onParentResize()
-    },
-  },
-
   methods: {
+    onMouseDown(event) {
+      this.onTouchStart({
+        touches: [
+          {
+            clientX: event.clientX,
+            clientY: event.clientY,
+            offsetX: event.offsetX,
+            offsetY: event.offsetY,
+          }
+        ],
+
+        preventDefault: () => event.preventDefault(),
+        stopImmediatePropagation: () => event.stopImmediatePropagation(),
+      })
+    },
+
+    onMouseMove(event) {
+      this.onTouchMove({
+        touches: [
+          {
+            clientX: event.clientX,
+            clientY: event.clientY,
+            offsetX: event.offsetX,
+            offsetY: event.offsetY,
+          }
+        ],
+
+        preventDefault: () => event.preventDefault(),
+        stopImmediatePropagation: () => event.stopImmediatePropagation(),
+      })
+    },
+
+    onMouseUp(event) {
+      this.onTouchEnd({
+        touches: [
+          {
+            clientX: event.clientX,
+            clientY: event.clientY,
+            offsetX: event.offsetX,
+            offsetY: event.offsetY,
+          }
+        ],
+
+        preventDefault: () => event.preventDefault(),
+        stopImmediatePropagation: () => event.stopImmediatePropagation(),
+      })
+    },
+
     onTouchStart(event) {
       const rect = this.$el.getBoundingClientRect()
       const cx = rect.x + rect.width / 2
@@ -97,6 +153,7 @@ const CandidatesView = createVueComponentWithCSS({
         event.stopImmediatePropagation()
         event.preventDefault()
         this.isBeingDragged = true
+        this.recomputeStyle()
         this.$emit("drag-start")
       }
     },
@@ -109,6 +166,7 @@ const CandidatesView = createVueComponentWithCSS({
         const touch = event.touches[0]
         this.x = touch.clientX + this.touchOffset.x
         this.y = touch.clientY + this.touchOffset.y
+        this.recomputeStyle()
         this.$emit("drag")
       }
     },
@@ -117,6 +175,7 @@ const CandidatesView = createVueComponentWithCSS({
       if (this.isBeingDragged) {
         event.stopImmediatePropagation()
         event.preventDefault()
+        this.recomputeStyle()
         this.$emit("drag-end")
       }
 
@@ -125,6 +184,10 @@ const CandidatesView = createVueComponentWithCSS({
     },
 
     onParentResize() {
+      if (!this.$el || !this.$el.parentElement) {
+        return
+      }
+
       const parentRect = this.$el.parentElement.getBoundingClientRect()
       const { width, height } = this.$el.getBoundingClientRect()
 
@@ -143,6 +206,8 @@ const CandidatesView = createVueComponentWithCSS({
         this.touchOffset.x = -this.width / 2
         this.touchOffset.y = -this.height * 1.5
       }
+
+      this.recomputeStyle()
     },
 
     recomputeStyle() {
@@ -160,35 +225,40 @@ const CandidatesView = createVueComponentWithCSS({
   },
 
   mounted() {
+    this.onMouseDown = this.onMouseDown.bind(this)
+    this.onMouseMove = this.onMouseMove.bind(this)
+    this.onMouseUp = this.onMouseUp.bind(this)
     this.onTouchStart = this.onTouchStart.bind(this)
     this.onTouchMove = this.onTouchMove.bind(this)
     this.onTouchEnd = this.onTouchEnd.bind(this)
     this.onParentResize = this.onParentResize.bind(this)
+
+    window.addEventListener("mousedown", this.onMouseDown)
+    window.addEventListener("mousemove", this.onMouseMove)
+    window.addEventListener("mouseup", this.onMouseUp)
     window.addEventListener("touchstart", this.onTouchStart)
     window.addEventListener("touchmove", this.onTouchMove)
     window.addEventListener("touchend", this.onTouchEnd)
     window.addEventListener("resize", this.onParentResize)
+
+    this.onParentResize = debounce(this.onParentResize, 10).bind(this)
     this.resizeObserver = new ResizeObserver(this.onParentResize)
     this.resizeObserver.observe(this.$el.parentElement)
-    window.requestAnimationFrame(() => this.onParentResize())
+    this.recomputeStyle = debounce(this.recomputeStyle, 1000 / 60).bind(this)
 
-    const loop = () => {
-      if (this.shouldKeepRecomputingStyle) {
-        this.recomputeStyle()
-        window.requestAnimationFrame(loop)
-      }
-    }
-
-    loop()
+    setTimeout(() => this.onParentResize(), 100)
+    setTimeout(() => this.$el.classList.add("visible"), 200)
   },
 
   unmounted() {
+    window.removeEventListener("mousedown", this.onMouseDown)
+    window.removeEventListener("mousemove", this.onMouseMove)
+    window.removeEventListener("mouseup", this.onMouseUp)
     window.removeEventListener("touchstart", this.onTouchStart)
     window.removeEventListener("touchmove", this.onTouchMove)
     window.removeEventListener("touchend", this.onTouchEnd)
     window.removeEventListener("resize", this.onParentResize)
     this.resizeObserver.disconnect()
-    this.shouldKeepRecomputingStyle = false
   },
 })
 
