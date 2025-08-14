@@ -50,12 +50,9 @@ import { Chicken } from "../components/chicken.mjs"
 import { createVueComponentWithCSS } from "@jrc03c/vue-component-with-css"
 import { Game } from "../model/game.mjs"
 
-function debounce(fn, ms) {
-  let timeout
-
+function debounce(fn) {
   return function() {
-    clearTimeout(timeout)
-    timeout = setTimeout(() => fn(...arguments), ms)
+    window.requestAnimationFrame(() => fn(...arguments))
   }
 }
 
@@ -241,10 +238,10 @@ const CandidatesView = createVueComponentWithCSS({
     window.addEventListener("touchend", this.onTouchEnd)
     window.addEventListener("resize", this.onParentResize)
 
-    this.onParentResize = debounce(this.onParentResize, 10).bind(this)
+    this.onParentResize = debounce(this.onParentResize).bind(this)
     this.resizeObserver = new ResizeObserver(this.onParentResize)
     this.resizeObserver.observe(this.$el.parentElement)
-    this.recomputeStyle = debounce(this.recomputeStyle, 1000 / 60).bind(this)
+    this.recomputeStyle = debounce(this.recomputeStyle).bind(this)
 
     setTimeout(() => this.onParentResize(), 100)
     setTimeout(() => this.$el.classList.add("visible"), 200)
