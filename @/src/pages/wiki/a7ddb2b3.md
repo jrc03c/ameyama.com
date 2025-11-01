@@ -14,4 +14,5 @@ layout: page
 ### Resources
 
 - [Consumer Aesthetics Research Institute](https://cari.institute/aesthetics)
+- [Sustainable web design](https://sustainablewebdesign.org/)
 - [Visual design rules you can safely follow every time](https://anthonyhobday.com/sideprojects/saferules/)
