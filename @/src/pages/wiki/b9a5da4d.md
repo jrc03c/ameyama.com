@@ -2,6 +2,7 @@
 title: Politics
 tags:
   - politics
+  - wiki
 permalink: /wiki/b9a5da4d/
 layout: page
 ---
