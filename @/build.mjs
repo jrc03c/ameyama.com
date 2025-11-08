@@ -3,13 +3,11 @@ import { execSync } from "node:child_process"
 import { Logger } from "@jrc03c/logger"
 import { watch } from "@jrc03c/watch"
 import * as fsx from "@jrc03c/fs-extras"
-import express from "express"
 import fs from "node:fs"
 import path from "node:path"
 import process from "node:process"
 
 const logger = new Logger({ path: "/tmp" })
-const PORT = 3000
 
 async function buildSearchIndex(options) {
   options = options || {}
@@ -107,13 +105,6 @@ if (process.argv.indexOf("-w") > -1 || process.argv.indexOf("--watch") > -1) {
     created: rebuild,
     modified: rebuild,
     deleted: rebuild,
-  })
-
-  const server = express()
-  server.use("/", express.static("dist", { extensions: ["html"] }))
-
-  server.listen(PORT, () => {
-    logger.logInfo("Visit: http://localhost:" + PORT)
   })
 }
 

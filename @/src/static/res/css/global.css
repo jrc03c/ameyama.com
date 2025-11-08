@@ -116,8 +116,8 @@ option,
 output,
 select,
 textarea {
-  font-family: monospace;
-  font-size: 12px;
+  font-family: "Atkinson Hyperlegible", Arial, Helvetica, sans-serif;
+  font-size: 16px;
   box-sizing: border-box;
 }
 
@@ -368,6 +368,14 @@ a {
 a.current {
   font-weight: bold;
   color: black;
+}
+
+code,
+code *,
+pre code,
+pre code * {
+  font-family: "Geist Mono", monospace !important;
+  font-size: 0.9rem !important;
 }
 
 code {

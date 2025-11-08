@@ -1,4 +1,7 @@
 {
+  "dependencies": {
+    "@jrc03c/web-worker-helper": "^0.0.10"
+  },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.1",
@@ -21,10 +24,8 @@
   "scripts": {
     "build": "node build.mjs",
     "check-links": "node check-for-dead-links.mjs",
+    "serve": "node serve.mjs",
     "watch": "node build.mjs --watch"
   },
-  "type": "module",
-  "dependencies": {
-    "@jrc03c/web-worker-helper": "^0.0.10"
-  }
+  "type": "module"
 }

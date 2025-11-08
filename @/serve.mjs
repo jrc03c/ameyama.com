@@ -18,7 +18,12 @@ import path from "node:path"
     )
   }
 
-  app.use("/", express.static(import.meta.dirname, { extensions: ["html"] }))
+  app.use(
+    "/",
+    express.static(path.join(import.meta.dirname, "dist"), {
+      extensions: ["html"],
+    }),
+  )
 
   app.listen(3000, () => {
     console.log("Listening on port 3000...")
