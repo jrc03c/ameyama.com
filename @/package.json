@@ -7,9 +7,10 @@
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.1",
     "@eslint/js": "^9.12.0",
     "@jrc03c/bash-colors": "^0.0.8",
-    "@jrc03c/fs-extras": "^0.0.26",
-    "@jrc03c/js-math-tools": "^0.0.99",
-    "@jrc03c/js-text-tools": "^0.0.96",
+    "@jrc03c/data-class": "^0.0.2",
+    "@jrc03c/fs-extras": "^0.0.30",
+    "@jrc03c/js-math-tools": "^0.0.104",
+    "@jrc03c/js-text-tools": "^0.0.105",
     "@jrc03c/logger": "^0.0.23",
     "@jrc03c/watch": "^0.0.23",
     "@jrc03c/web-crawler": "^0.0.18",
@@ -19,6 +20,7 @@
     "globals": "^15.11.0",
     "gray-matter": "^4.0.3",
     "katex": "^0.16.22",
+    "liquidjs": "^10.24.0",
     "prettier": "^3.1.0"
   },
   "scripts": {

@@ -1,3 +1,4 @@
+import { buildRss } from "./build-rss.mjs"
 import { collapseWhitespace } from "@jrc03c/js-text-tools"
 import { execSync } from "node:child_process"
 import { Logger } from "@jrc03c/logger"
@@ -92,6 +93,7 @@ async function rebuild() {
 
     await buildSearchIndex()
     await buildSitemap()
+    await buildRss()
     logger.logSuccess("Done! 🎉")
   } catch (e) {
     console.error(e)

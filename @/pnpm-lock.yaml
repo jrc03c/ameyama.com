@@ -24,15 +24,18 @@ importers:
       '@jrc03c/bash-colors':
         specifier: ^0.0.8
         version: 0.0.8
+      '@jrc03c/data-class':
+        specifier: ^0.0.2
+        version: 0.0.2
       '@jrc03c/fs-extras':
-        specifier: ^0.0.26
-        version: 0.0.26
+        specifier: ^0.0.30
+        version: 0.0.30
       '@jrc03c/js-math-tools':
-        specifier: ^0.0.99
-        version: 0.0.99
+        specifier: ^0.0.104
+        version: 0.0.104
       '@jrc03c/js-text-tools':
-        specifier: ^0.0.96
-        version: 0.0.96
+        specifier: ^0.0.105
+        version: 0.0.105
       '@jrc03c/logger':
         specifier: ^0.0.23
         version: 0.0.23
@@ -60,6 +63,9 @@ importers:
       katex:
         specifier: ^0.16.22
         version: 0.16.22
+      liquidjs:
+        specifier: ^10.24.0
+        version: 10.24.0
       prettier:
         specifier: ^3.1.0
         version: 3.6.2
@@ -350,18 +356,31 @@ packages:
     resolution: {integrity: sha512-VyGXA1zUqtjap/JuOVHZW+jbvjyCI1i+9GNM4QAcHZWOxrAyxGEOILfyuZH1ezlaKdgmIKv8GRHWKBbIKkNSkA==}
     hasBin: true
 
+  '@jrc03c/bash-colors@0.0.9':
+    resolution: {integrity: sha512-9ZXLRBes94L9tMgNt9sTg0XPfcz4xDMjEcHv7gNqzzL5DIAhLqC3BqBc+r95Y/+kA0ubLbrjIcHhVJefZrFHPw==}
+    hasBin: true
+
+  '@jrc03c/data-class@0.0.2':
+    resolution: {integrity: sha512-HXn3WFJs3vj3B1r1QjTJu72y5seWXQmhNKZpW8orobnMBXVCvRawCXRFVhdMC37EKJsZNHOIBN1pn56QshP0UA==}
+
   '@jrc03c/fs-extras@0.0.26':
     resolution: {integrity: sha512-iUg1mHLfEY2LbohFRmpHX/r1SW2sitdneSM/7XbOUqYT6rcbOe4GEKdKzBLOlRVL9Zkgi1HulZxWS0v7eP/tZw==}
+
+  '@jrc03c/fs-extras@0.0.30':
+    resolution: {integrity: sha512-kjzXp16OmitmcvXbcdktng560+iv577COaa513ed5eJgc4oZkUw+++KmTqxcbY8PJLydkBFTz5YTiUZKxj7rgg==}
+
+  '@jrc03c/js-math-tools@0.0.104':
+    resolution: {integrity: sha512-DS4rQRua0bLiCG/mpm61mwA3YjCyoBj/lbEou3biMyLhdq3wZHtsdgxB7qGaBrmiKw+QpojvJzwqC4XVm1Mfeg==}
 
   '@jrc03c/js-math-tools@0.0.99':
     resolution: {integrity: sha512-A+ERWXwqTqVKgIT9szFCOt9rFa7iXAY6C6ZJcFNJw5yme9o0yuEUC8wAp0EfEn8h12LVtff7stLBETMeSmnDNw==}
 
-  '@jrc03c/js-text-tools@0.0.88':
-    resolution: {integrity: sha512-l07LGLbw7F8pdj5UTRvoWNRdE1Sl7VQr1CFw5tWBuEIu+vAUiWcgvM5NjaWJNT60HtotNGrktfF8k3KcliP+TA==}
+  '@jrc03c/js-text-tools@0.0.105':
+    resolution: {integrity: sha512-ez0Mzhxw7Vb7rsGGUR3ERLYGHnA+bCM5oqJUn8D0zPBcDXpkLkpIVtP8JxNhVzZ0mrbQDeYXzVL1CMG2lck1vQ==}
     hasBin: true
 
-  '@jrc03c/js-text-tools@0.0.96':
-    resolution: {integrity: sha512-+VHVFIRe5A+RyBsdLMcKIcTIYKf2llBZuD2k9WTa+YYbELQiw66w098NGaY2A18MssZhZLKH1PFP/fY0Rp16iA==}
+  '@jrc03c/js-text-tools@0.0.88':
+    resolution: {integrity: sha512-l07LGLbw7F8pdj5UTRvoWNRdE1Sl7VQr1CFw5tWBuEIu+vAUiWcgvM5NjaWJNT60HtotNGrktfF8k3KcliP+TA==}
     hasBin: true
 
   '@jrc03c/js-type-experiments@0.0.26':
@@ -372,6 +391,10 @@ packages:
 
   '@jrc03c/make-key@0.0.40':
     resolution: {integrity: sha512-a4vWqCgnQ1kaf6YOHZyDDKGgMwCLdEGPCkRmyNsAj5GamMK21PyIZdo6KbvUgXCQr4VFK+FMlHs5e9PdUewung==}
+    hasBin: true
+
+  '@jrc03c/make-key@0.0.41':
+    resolution: {integrity: sha512-NFoQ2oKZnZdcWZnc8WSV1FGJ8LB6c+wvFUu0XLwIP/KbfJZIio2mvTRfWNlgVmEtxlgqMKBI3I1LhRlZrdGeOA==}
     hasBin: true
 
   '@jrc03c/pause@0.0.11':
@@ -1016,9 +1039,9 @@ packages:
   linkify-it@5.0.0:
     resolution: {integrity: sha512-5aHCbzQRADcdP+ATqnDuhhJ/MRIqDkZX5pyjFHRRysS8vZ5AbqGEoFIb6pYHPZ+L/OC2Lc+xT8uHVVR5CAK/wQ==}
 
-  liquidjs@10.21.1:
-    resolution: {integrity: sha512-NZXmCwv3RG5nire3fmIn9HsOyJX3vo+ptp0yaXUHAMzSNBhx74Hm+dAGJvscUA6lNqbLuYfXgNavRQ9UbUJhQQ==}
-    engines: {node: '>=14'}
+  liquidjs@10.24.0:
+    resolution: {integrity: sha512-TAUNAdgwaAXjjcUFuYVJm9kOVH7zc0mTKxsG9t9Lu4qdWjB2BEblyVIYpjWcmJLMGgiYqnGNJjpNMHx0gp/46A==}
+    engines: {node: '>=16'}
     hasBin: true
 
   list-to-array@1.1.0:
@@ -1542,7 +1565,7 @@ snapshots:
       iso-639-1: 3.1.5
       js-yaml: 4.1.0
       kleur: 4.1.5
-      liquidjs: 10.21.1
+      liquidjs: 10.24.0
       luxon: 3.7.2
       markdown-it: 14.1.0
       minimist: 1.2.8
@@ -1740,19 +1763,31 @@ snapshots:
 
   '@jrc03c/bash-colors@0.0.8': {}
 
+  '@jrc03c/bash-colors@0.0.9': {}
+
+  '@jrc03c/data-class@0.0.2':
+    dependencies:
+      '@jrc03c/js-math-tools': 0.0.104
+
   '@jrc03c/fs-extras@0.0.26':
     dependencies:
       '@jrc03c/js-math-tools': 0.0.99
 
+  '@jrc03c/fs-extras@0.0.30':
+    dependencies:
+      '@jrc03c/js-math-tools': 0.0.104
+
+  '@jrc03c/js-math-tools@0.0.104': {}
+
   '@jrc03c/js-math-tools@0.0.99': {}
 
-  '@jrc03c/js-text-tools@0.0.88':
+  '@jrc03c/js-text-tools@0.0.105':
     dependencies:
-      '@jrc03c/bash-colors': 0.0.8
-      '@jrc03c/js-math-tools': 0.0.99
-      '@jrc03c/make-key': 0.0.40
+      '@jrc03c/bash-colors': 0.0.9
+      '@jrc03c/js-math-tools': 0.0.104
+      '@jrc03c/make-key': 0.0.41
 
-  '@jrc03c/js-text-tools@0.0.96':
+  '@jrc03c/js-text-tools@0.0.88':
     dependencies:
       '@jrc03c/bash-colors': 0.0.8
       '@jrc03c/js-math-tools': 0.0.99
@@ -1770,6 +1805,8 @@ snapshots:
       '@jrc03c/make-key': 0.0.40
 
   '@jrc03c/make-key@0.0.40': {}
+
+  '@jrc03c/make-key@0.0.41': {}
 
   '@jrc03c/pause@0.0.11': {}
 
@@ -2477,7 +2514,7 @@ snapshots:
     dependencies:
       uc.micro: 2.1.0
 
-  liquidjs@10.21.1:
+  liquidjs@10.24.0:
     dependencies:
       commander: 10.0.1
 

@@ -1,5 +1,11 @@
 {
-  "title": "雨山",
+  "author": {
+    "email": "jrc03c@pm.me",
+    "name": "Josh"
+  },
+  "description": "Josh's website",
+  "domain": "ameyama.com",
   "subtitle": "...",
-  "author": "jrc03c"
+  "title": "雨山",
+  "url": "https://ameyama.com"
 }
