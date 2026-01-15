@@ -1,3 +1,4 @@
 node_modules
+submodules/media/files/*
 submodules/stats/logs.json
 submodules/stats/times.json
