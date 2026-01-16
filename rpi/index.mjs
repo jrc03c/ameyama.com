@@ -1,5 +1,6 @@
-import { install as installStatsSubmodule } from "./submodules/stats/index.mjs"
+import { install as installMediaSubmodule } from "./submodules/media/index.mjs"
 import { install as installMusicAppSubmodule } from "./submodules/music/back-end/index.mjs"
+import { install as installStatsSubmodule } from "./submodules/stats/index.mjs"
 import express from "express"
 import process from "node:process"
 
@@ -13,7 +14,7 @@ if (!process.env.MUSIC_DIR) {
 
 const app = express()
 
-installStatsSubmodule(app)
+installMediaSubmodule(app)
 
 installMusicAppSubmodule(
   app,
@@ -21,6 +22,8 @@ installMusicAppSubmodule(
   process.env.MUSIC_SETTINGS_DIR,
   process.env.MUSIC_DIR,
 )
+
+installStatsSubmodule(app)
 
 app.listen(3000, () => {
   console.log("Listening on port 3000...")
