@@ -375,7 +375,7 @@ code *,
 pre code,
 pre code * {
   font-family: "Geist Mono", monospace !important;
-  font-size: 0.9rem !important;
+  font-size: 0.9em !important;
 }
 
 code {
