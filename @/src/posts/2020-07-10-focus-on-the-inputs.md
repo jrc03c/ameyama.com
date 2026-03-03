@@ -15,13 +15,13 @@ So, I'm about 40 pounds overweight right now, and I'm not happy about it. I've b
 1. Gain even more weight instead.
 1. Repeat.
 
-But about nine weeks ago, something miraculous happened. I started the couch-to-5k running program...and stuck with it. Now, to be clear, I haven't lost any weight yet. And I'm only on week six (of nine, I think) because I have to keep repeating workouts because I can't completely run them without stopping yet. But it's still miraculous because this is probably the longest I've stuck with an exercise program since high school! The reason I've been able to stick with it so far --- and hopefully writing this won't jinx me --- is because I read a blog post that changed my whole outlook. It was a post called ["Focus on the Inputs"](https://www.raptitude.com/2020/05/focus-on-the-inputs/). Here's the gist:
+But about nine weeks ago, something miraculous happened. I started the couch-to-5k running program...and stuck with it. Now, to be clear, I haven't lost any weight yet. And I'm only on week six (of nine, I think) because I have to keep repeating workouts because I can't completely run them without stopping yet. But it's still miraculous because this is probably the longest I've stuck with an exercise program since high school! The reason I've been able to stick with it so far — and hopefully writing this won't jinx me — is because I read a blog post that changed my whole outlook. It was a post called ["Focus on the Inputs"](https://www.raptitude.com/2020/05/focus-on-the-inputs/). Here's the gist:
 
 > "Instead of becoming ever more vigilant about getting myself to achieve certain outcomes, I'm monitoring quality of the input. I'm just trying to get more good things into the hopper, and letting the system do its work."
 >
-> --- David, raptitude.com
+> — David, raptitude.com
 
-I needed to hear that. I needed to hear that I'd been too focused on the outcomes. I needed to hear that the system will take care of the results, but that I can't even hope to have good results if I'm not providing good inputs into the system. 
+I needed to hear that. I needed to hear that I'd been too focused on the outcomes. I needed to hear that the system will take care of the results, but that I can't even hope to have good results if I'm not providing good inputs into the system.
 
 As I mentioned in step 4 above, one of the reasons I think I kept failing at past attempts to get fit was my obsession with seeing immediate results. I know somewhere in my brain that a person can't lose 40 pounds overnight...but I'd nevertheless weigh in every day and see if I'd made any progress yet. And when I hadn't, my morale would plummet. But reading David's blog post made something click for me. I thought: Is it better to be 40 pounds overweight and to run every day, or to be 40 pounds overweight and to _not_ run every day? Well, all things being equal, I suppose the former is better. Of course, I probably don't intrinsically value exercise; i.e., I wouldn't keep doing it if it never had any positive benefits. But by focusing on the inputs, I'm giving myself the leisure to worry much less about if and when the benefits will appear.
 

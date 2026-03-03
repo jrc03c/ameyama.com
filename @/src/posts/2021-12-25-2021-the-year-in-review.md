@@ -1,12 +1,12 @@
 ---
-title: '2021: The Year in Review'
+title: "2021: The Year in Review"
 layout: post
 tags: post
 id: ed0530a4
 permalink: /blog/ed0530a4/
 ---
 
-I only wrote one blog post this year?! That can't possibly be right. I guess I haven't written much this year because it hasn't felt like much has been happening. It was a sort of quiet, low-key year --- which is no bad thing, of course. But I guess I also feel like I sort of stumbled through it with my head down, watching my feet but not really watching the path, if that makes sense. How did 2021 already slide by?
+I only wrote one blog post this year?! That can't possibly be right. I guess I haven't written much this year because it hasn't felt like much has been happening. It was a sort of quiet, low-key year — which is no bad thing, of course. But I guess I also feel like I sort of stumbled through it with my head down, watching my feet but not really watching the path, if that makes sense. How did 2021 already slide by?
 
 [![](/res/media/2021.png)](https://twitter.com/jzux/status/1470845861236076544)
 
