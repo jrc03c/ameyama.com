@@ -45,7 +45,7 @@ sudo cryptsetup luksClose some_name
 
 **Add extra keys**
 
-My RaspberryPI doesn't have enough memory to open a partition that's been encrypted with LUKS2 (the default scheme used above). One solution to this problem is to add an extra key that requires less memory to use. The first step is to see which key slots have already been used:
+My Raspberry Pi doesn't have enough memory to open a partition that's been encrypted with LUKS2 (the default scheme used above). One solution to this problem is to add an extra key that requires less memory to use. The first step is to see which key slots have already been used:
 
 ```bash
 sudo cryptsetup luksDump /dev/sdXY
