@@ -126,7 +126,7 @@ const template = /* html */ `
     <div
       :class="{
         'has-win-animation': hasWon,
-        'has-won': true,
+        'has-won': hasWon,
       }"
       class="typed"
       ref="typed"
@@ -187,7 +187,7 @@ const GameView = createVueComponentWithCSS({
       isAnimating: false,
       letters: [],
       onKeyDownHandler: null,
-      typed: "macrofauna",
+      typed: "",
       word: null,
     }
   },
