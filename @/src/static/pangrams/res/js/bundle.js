@@ -96,6 +96,8 @@
 
   .typed {
     font-size: 1.5em;
+    width: auto;
+    text-wrap: nowrap;
   }
 
   .typed.has-won::before {
@@ -195,7 +197,7 @@
     <div
       :class="{
         'has-win-animation': hasWon,
-        'has-won': hasWon,
+        'has-won': true,
       }"
       class="typed"
       ref="typed"
@@ -247,7 +249,7 @@
         isAnimating: false,
         letters: [],
         onKeyDownHandler: null,
-        typed: "",
+        typed: "macrofauna",
         word: null
       };
     },

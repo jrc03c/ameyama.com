@@ -23,6 +23,8 @@ const css = /* css */ `
 
   .typed {
     font-size: 1.5em;
+    width: auto;
+    text-wrap: nowrap;
   }
 
   .typed.has-won::before {
@@ -124,7 +126,7 @@ const template = /* html */ `
     <div
       :class="{
         'has-win-animation': hasWon,
-        'has-won': hasWon,
+        'has-won': true,
       }"
       class="typed"
       ref="typed"
@@ -185,7 +187,7 @@ const GameView = createVueComponentWithCSS({
       isAnimating: false,
       letters: [],
       onKeyDownHandler: null,
-      typed: "",
+      typed: "macrofauna",
       word: null,
     }
   },

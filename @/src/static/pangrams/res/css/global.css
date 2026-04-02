@@ -34,3 +34,16 @@ body,
 button {
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  *,
+  button,
+  input,
+  optgroup,
+  option,
+  output,
+  select,
+  textarea {
+    font-size: 5vw;
+  }
+}
