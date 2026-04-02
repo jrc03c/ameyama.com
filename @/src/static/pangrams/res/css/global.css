@@ -1,0 +1,36 @@
+:root {
+  --padding: 1em;
+}
+
+*,
+button,
+input,
+optgroup,
+option,
+output,
+select,
+textarea {
+  font-family: ui-monospace, monospace;
+  font-weight: normal;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+}
+
+html,
+body,
+#app {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100vw;
+  min-width: 100vw;
+  max-width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+button {
+  cursor: pointer;
+}
