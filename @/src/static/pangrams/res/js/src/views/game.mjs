@@ -211,6 +211,7 @@ const GameView = createVueComponentWithCSS({
 
       if (pangrams.includes(this.typed)) {
         this.hasWon = true
+        localStorage.clear()
       } else {
         const el = this.$el.querySelector(".typed")
         el.classList.add("has-shake-animation")

@@ -268,6 +268,7 @@
         this.isAnimating = true;
         if (pangrams_default.includes(this.typed)) {
           this.hasWon = true;
+          localStorage.clear();
         } else {
           const el = this.$el.querySelector(".typed");
           el.classList.add("has-shake-animation");
