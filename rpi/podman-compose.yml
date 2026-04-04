@@ -29,7 +29,7 @@ services:
       - /home/josh/storage/music:/music:z
       - /home/josh/.config/navidrome:/data:z
     environment:
-      # ND_BASEURL: /music
+      ND_BASEURL: /music
       ND_ENABLEINSIGHTSCOLLECTOR: false
 
   # node:
