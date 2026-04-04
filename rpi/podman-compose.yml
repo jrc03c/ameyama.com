@@ -20,13 +20,25 @@ services:
     volumes:
       - /home/josh/.local/share/caddy-root:/root:z
 
-  node:
-    build:
-      context: .
-      dockerfile: Dockerfile.node
+  navidrome:
+    image: docker.io/deluan/navidrome:latest
+    restart: unless-stopped
     ports:
-      - 3000:3000
+      - 4533:4533
     volumes:
-      - /home/josh/.config/music-app:/root/.config/music-app:z
-      - /home/josh/storage/music:/root/music:z
-      - .:/root/www:z
+      - /home/josh/storage/music:/music:z
+      - /home/josh/.config/navidrome:/data:z
+    environment:
+      - ND_BASEURL: /music
+      - ND_ENABLEINSIGHTSCOLLECTOR: false
+
+  # node:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.node
+  #   ports:
+  #     - 3000:3000
+  #   volumes:
+  #     - /home/josh/.config/music-app:/root/.config/music-app:z
+  #     - /home/josh/storage/music:/root/music:z
+  #     - .:/root/www:z
