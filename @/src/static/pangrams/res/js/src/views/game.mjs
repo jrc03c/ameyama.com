@@ -153,6 +153,10 @@ const template = /* html */ `
     </div>
 
     <div class="controls">
+      <button :disabled="hasWon" @click="reveal">
+        reveal
+      </button>
+
       <button :disabled="hasWon" @click="submit">
         submit
       </button>
@@ -176,6 +180,40 @@ import { createVueComponentWithCSS } from "@jrc03c/vue-component-with-css"
 import { pause } from "@jrc03c/pause"
 import pangrams from "../pangrams.json" with { type: "json" }
 
+const words = []
+
+const sample = (() => {
+  const counts = {}
+  let sum = 0
+
+  for (let i = 0; i < pangrams.length; i++) {
+    const v = pangrams[i]
+    words.push(v.word)
+    counts[v.word] = v.count
+    sum += v.count
+  }
+
+  return function () {
+    while (true) {
+      const i = Math.floor(Math.random() * words.length)
+      const word = words[i]
+      const count = counts[word]
+
+      if (Math.random() < count / sum) {
+        return word
+      }
+    }
+  }
+})()
+
+function shuffle(array) {
+  for (let i = array.length - 1; i >= 1; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[array[i], array[j]] = [array[j], array[i]]
+  }
+  return array
+}
+
 const GameView = createVueComponentWithCSS({
   name: "x-game-view",
   template,
@@ -193,8 +231,19 @@ const GameView = createVueComponentWithCSS({
   },
 
   methods: {
+    reveal() {
+      const shouldReveal = confirm("Are you sure?")
+
+      if (!shouldReveal) {
+        return
+      }
+
+      this.typed = this.word
+      this.submit()
+    },
+
     shuffle() {
-      this.letters = this.letters.toSorted((a, b) => Math.random() * 2 - 1)
+      this.letters = shuffle(this.letters)
       localStorage.setItem("letters", JSON.stringify(this.letters))
     },
 
@@ -209,7 +258,7 @@ const GameView = createVueComponentWithCSS({
 
       this.isAnimating = true
 
-      if (pangrams.includes(this.typed)) {
+      if (words.includes(this.typed)) {
         this.hasWon = true
         localStorage.clear()
       } else {
@@ -231,7 +280,7 @@ const GameView = createVueComponentWithCSS({
     if (cachedWord) {
       this.word = cachedWord
     } else {
-      this.word = pangrams[Math.floor(Math.random() * pangrams.length)]
+      this.word = sample()
       localStorage.setItem("word", this.word)
     }
 
@@ -242,10 +291,7 @@ const GameView = createVueComponentWithCSS({
     if (cachedLetters) {
       this.letters = JSON.parse(cachedLetters)
     } else {
-      this.letters = Array.from(new Set(this.word.split(""))).toSorted(
-        () => Math.random() * 2 - 1,
-      )
-
+      this.letters = shuffle(Array.from(new Set(this.word.split(""))))
       localStorage.setItem("letters", JSON.stringify(this.letters))
     }
 
