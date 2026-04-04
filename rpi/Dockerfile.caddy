@@ -4,4 +4,4 @@ EXPOSE 8080
 EXPOSE 8443
 VOLUME /root
 # ENTRYPOINT caddy reverse-proxy --from rpi.ameyama.com --to anubis:8923
-ENTRYPOINT caddy reverse-proxy --from rpi.ameyama.com --to navidrome:4553
+ENTRYPOINT caddy reverse-proxy --from rpi.ameyama.com --to navidrome:4533
