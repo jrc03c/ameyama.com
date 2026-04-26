@@ -440,6 +440,18 @@ img {
   box-shadow: var(--shadow);
 }
 
+.copy-to-clipboard-button {
+  position: absolute;
+  top: 0.5em !important;
+  right: 0.5em !important;
+  opacity: 0.25;
+}
+
+.copy-to-clipboard-button:hover,
+.copy-to-clipboard-button:active {
+  opacity: 1;
+}
+
 .post:has(.title + .details) .title {
   margin-bottom: 0;
 }

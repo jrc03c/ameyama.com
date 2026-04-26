@@ -1,0 +1,22 @@
+<script>
+  window.addEventListener("load", () => {
+    const pres = Array.from(document.querySelectorAll("pre")).filter(
+      v => !!v.querySelector("code"),
+    )
+
+    for (const pre of pres) {
+      pre.style.position = "relative"
+
+      const button = document.createElement("button")
+      button.innerHTML = "copy"
+      button.classList.add("copy-to-clipboard-button")
+      pre.appendChild(button)
+
+      button.addEventListener("click", () => {
+        pre.removeChild(button)
+        window.navigator.clipboard.writeText(pre.textContent)
+        pre.appendChild(button)
+      })
+    }
+  })
+</script>
