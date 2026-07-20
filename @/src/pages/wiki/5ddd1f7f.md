@@ -14,8 +14,30 @@ layout: page
 To manually set the size of a `matplotlib` plot, do:
 
 ```py
-# 8" x 4.5"
-plot.rcParams["figure.figsize"] = 8, 4.5
+import numpy as np
+import matplotlib.pyplot as plot
+
+x = np.random.normal(size=1000)
+
+# Option 1:
+if True:
+  # 8" x 4.5"
+  plot.rcParams["figure.figsize"] = 8, 4.5
+  plot.hist(x)
+  plot.show()
+  plot.clf()
+
+# Option 2:
+if True:
+  fig = plot.figure()
+  fig.set_figwidth(8)
+  fig.set_figheight(4.5)
+  plot.hist(x)
+  plot.show()
+  plot.clf()
+
+# Note that in either option, setting the dimensions must be done *before*
+# plotting!
 ```
 
 To use a particular (named) color palette:
