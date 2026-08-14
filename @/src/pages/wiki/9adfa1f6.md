@@ -45,6 +45,30 @@ Then confirm that the connection works:
 rclone lsd some_service_name:some_bucket_name
 ```
 
+To create a sort of shortcut to a particular bucket, it's possible to create "alias" entries in the config file. For example:
+
+```
+# First, declare the endpoint (same as above):
+[some_service_name]
+type = s3
+provider = Other
+endpoint = https://example.com
+access_key_id = [...]
+secret_access_key = [...]
+region = us-1
+
+# Then create the alias
+[some_bucket_name]
+type = alias
+remote = some_service_name:some_bucket_name
+```
+
+Then confirm that the connection works:
+
+```bash
+rclone lsd some_bucket_name:
+```
+
 ### Usage
 
 Browse using the built-in TUI:
