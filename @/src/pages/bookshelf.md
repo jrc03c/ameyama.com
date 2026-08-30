@@ -4,6 +4,32 @@ title: Bookshelf
 permalink: /bookshelf/
 ---
 
+### August 2026
+
+> **NOTE:** I didn't read all of these books in August of 2026, of course; but since it's been a long time since I've updated this page and I don't actually know when I read most of these books, I'm just dumping them all here for now.
+
+- _Awake in the Night Land_, by John C. Wright
+- _The Devil's Tome_, by Shiva Honey
+- _Eon_, by Greg Bear
+- _The Way of All Ghosts_, by Greg Bear
+- _Bird Box_, by Josh Malerman
+- _Gitanjali_, by Rabindranath Tagore
+- _A Brief History of Time_, by Stephen Hawking
+- _Gideon the Ninth_, by Tamsyn Muir
+- _Harrow the Ninth_, by Tamsyn Muir
+- _Nona the Ninth_, by Tamsyn Muir
+- _The Mysterious Study of Doctor Sex_, by Tamsyn Muir
+- _The Unwanted Guest_, by Tamsyn Muir
+- _Project Hail Mary_, by Andy Weir
+- _How to Write One Song_, by Jeff Tweedy
+- _The House in the Cerulean Sea_, by TJ Klune
+- _Six of Crows_, by Leigh Bardugo
+- _Tainaron: Mail from Another City_, by Leena Krohn
+- _The Magicians_, by Lev Grossman
+- _The Magician King_, by Lev Grossman
+- _The Magician's Land_, by Lev Grossman
+- _Decoding the Universe_, by Charles Seife
+
 ### March 2023
 
 - _An Anthropologist on Mars_, by Oliver Sacks
