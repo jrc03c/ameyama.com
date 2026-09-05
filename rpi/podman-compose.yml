@@ -10,15 +10,15 @@ services:
   #   volumes:
   #     - ./bot-policy.json:/data/cfg/bot-policy.json:z
 
-  caddy:
-    build:
-      context: .
-      dockerfile: Dockerfile.caddy
-    ports:
-      - 8080:80
-      - 8443:443
-    volumes:
-      - /home/josh/.local/share/caddy-root:/root:z
+  # caddy:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.caddy
+  #   ports:
+  #     - 8080:80
+  #     - 8443:443
+  #   volumes:
+  #     - /home/josh/.local/share/caddy-root:/root:z
 
   navidrome:
     image: docker.io/deluan/navidrome:latest
